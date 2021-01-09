@@ -17,10 +17,15 @@
         name: httpd
         enabled: true
         state: started
+        
+  - name: Create a directory for git repo
+    file:
+        path: /home/ec2-user/webserver
+        state: directory
 
   - git:
         repo: https://github.com/johnwu-me/webserver.git
-        dest: /home/ec2-user
+        dest: /home/ec2-user/webserver
         clone: yes
         update: yes
         
@@ -30,7 +35,7 @@
   - name: copy web1 index to var/www/html
     copy:
         remote_src: true
-        src: /home/ec2-user/webserver/web1/index.html
+        src: /home/ec2-user/webserver/webserver/web1/index.html
         dest: /var/www/html/
     
     
@@ -40,5 +45,5 @@
   - name: copy web2 index to var/www/html
     copy:
         remote_src: true
-        src: /home/ec2-user/webserver/web2/index.html
+        src: /home/ec2-user/webserver/webserver/web2/index.html
         dest: /var/www/html/
