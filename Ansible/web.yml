@@ -1,0 +1,37 @@
+
+---
+
+#install files for webserver
+- hosts: web
+
+  tasks:
+  - name: install httpd and git
+    become: true
+    yum:
+        name: httpd, git
+        state: latest
+        
+  - name: start httpd service
+    become: true
+    service:
+        name: httpd
+        enabled: true
+        state: started
+
+  - name: Create a directory for git repo
+    file:
+        path: /home/ec2-user/webserver
+        state: directory
+
+  - git:
+        repo: https://github.com/johnwu-me/webserver.git
+        dest: /home/ec2-user/webserver
+        clone: yes
+        update: yes
+
+  - name: unzip web files to html directory
+    become: true
+    unarchive: 
+        src: /home/ec2-user/webserver/webserver.zip
+        dest: /var/www/html
+        remote_src: true
