@@ -33,7 +33,8 @@
 
   tasks:
   - name: copy web1 index to var/www/html
-    mv:
+    become: true
+    copy:
         remote_src: true
         src: /home/ec2-user/webserver/web1/index.html
         dest: /var/www/html/
@@ -43,6 +44,7 @@
 
   tasks:
   - name: copy web2 index to var/www/html
+    become: true
     mv:
         remote_src: true
         src: /home/ec2-user/webserver/web2/index.html
