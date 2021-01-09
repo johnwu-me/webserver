@@ -35,7 +35,7 @@
   - name: copy web1 index to var/www/html
     copy:
         remote_src: true
-        src: /home/ec2-user/webserver/webserver/web1/index.html
+        src: /home/ec2-user/webserver/web1/index.html
         dest: /var/www/html/
     
     
@@ -45,5 +45,5 @@
   - name: copy web2 index to var/www/html
     copy:
         remote_src: true
-        src: /home/ec2-user/webserver/webserver/web2/index.html
+        src: /home/ec2-user/webserver/web2/index.html
         dest: /var/www/html/
