@@ -31,7 +31,26 @@
 
   - name: unzip web files to html directory
     become: true
-    unarchive: 
+    unarchive:
+        remote_src: true
         src: /home/ec2-user/webserver/webserver.zip
         dest: /var/www/html
+        
+- hosts: web1
+
+  tasks:
+  - name: copy web1 index to var/www/html
+    copy: 
         remote_src: true
+        src: /home/ec2-user/webserver/web1/index.html
+        dest: /var/www/html/
+    
+    
+- hosts: web2
+
+  tasks:
+  - name: copy web2 index to var/www/html
+    copy: 
+        remote_src: true
+        src: /home/ec2-user/webserver/web2/index.html
+        dest: /var/www/html/
