@@ -20,7 +20,7 @@
 
   - git:
         repo: https://github.com/johnwu-me/webserver.git
-        dest: /home/ec2-user/
+        dest: /home/ec2-user
         clone: yes
         update: yes
         
