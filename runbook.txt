@@ -1,0 +1,15 @@
+terraform plan - make sure there are no errors, correct if there any
+
+terraform apply
+
+scp key pair to bastion instance
+
+ssh into bastion instance
+chmod 0400 keypair
+install git and ansible
+clone repo and cd into playbook path
+run playbook - ansible-playbook -i [host file] --private-key [key pair] [playbook]
+
+load the load balancer url and refresh to make sure both webpages are being displayed
+
+terraform destroy
